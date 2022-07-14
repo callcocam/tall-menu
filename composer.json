@@ -1,0 +1,28 @@
+{
+    "name": "callcocam/tall-menu",
+    "type": "package",
+    "description": "The packages report table.",
+    "keywords": ["framework", "laravel", "livewire", "alpinejs", "tailwindcss"],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3|^8.0",
+        "livewire/livewire": "^2.5",
+        "callcocam/tall-acl": "dev-main",
+        "callcocam/tall-sluggable": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tall\\Menu\\": "src"
+        }
+    },
+    
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tall\\Menu\\MenusServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
