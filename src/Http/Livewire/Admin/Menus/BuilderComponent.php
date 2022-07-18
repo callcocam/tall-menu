@@ -32,6 +32,7 @@ class BuilderComponent extends FormComponent
     public function mount(?Menu $model)
     {
         $this->authorize(Route::currentRouteName());
+        $this->sortable = request()->query('sortable', false);
         $this->setFormProperties($model);
 
     }
@@ -114,5 +115,12 @@ class BuilderComponent extends FormComponent
     public function updateSubMenuOrder($data = [])
     {
         $this->load();
+    }
+
+    public function activeOrder()
+    {
+        $sortable = !$this->sortable;
+        $model = $this->model;
+        return redirect()->route(config('menus.routes.menus.builder'), compact('model','sortable'));
     }
 }

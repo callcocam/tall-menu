@@ -22,6 +22,7 @@ class MenusServiceProvider extends ServiceProvider
         $this->registerMenusFile();
         $this->publishMigrations();
         $this->loadMigrations();
+        $this->publishAssets();
         Livewire::component( 'tall-menus::admin.menus.list-component', \Tall\Menus\Http\Livewire\Admin\Menus\ListComponent::class);
         Livewire::component( 'tall-menus::admin.menus.create-component', \Tall\Menus\Http\Livewire\Admin\Menus\CreateComponent::class);
         Livewire::component( 'tall-menus::admin.menus.edit-component', \Tall\Menus\Http\Livewire\Admin\Menus\EditComponent::class);
@@ -42,6 +43,20 @@ class MenusServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
 
  
+    }
+
+      /**
+     * Publish the config file.
+     *
+     * @return void
+     */
+    protected function publishAssets()
+    {
+    
+        $this->publishes([
+            __DIR__.'/../public/js/menu.js' => public_path('js/menu.js'),
+            __DIR__.'/../public/css/menu.css' => public_path('css/menu.css')
+        ], 'tall-assets');
     }
 
     /**

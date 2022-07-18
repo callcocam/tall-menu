@@ -44,7 +44,9 @@ trait MenuOptions{
     public function closeModal(){
        if($this->updated){
             if($this->currentMenu){
-                $this->emit('loadMenus',[]);         
+                $this->emit('loadMenus',[]);     
+                $this->cardModal = true;  
+                $this->reset(['data']);    
             }
        }
      }
