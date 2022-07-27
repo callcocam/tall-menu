@@ -6,21 +6,20 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "livewire/livewire": "^2.5",
         "callcocam/acl": "dev-main",
         "callcocam/tall-sluggable": "dev-main",
         "callcocam/tall-status": "dev-main"
     },
     "autoload": {
         "psr-4": {
-            "Tall\\Menu\\": "src"
+            "Tall\\Menus\\": "src"
         }
     },
     
     "extra": {
         "laravel": {
             "providers": [
-                "Tall\\Menu\\MenusServiceProvider"
+                "Tall\\Menus\\MenusServiceProvider"
             ]
         }
     },
