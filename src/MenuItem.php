@@ -311,7 +311,7 @@ class MenuItem implements ArrayableContract
      */
     public function getChilds()
     {
-        if (config('menus.ordering')) {
+        if (config('menu.ordering')) {
             return collect($this->childs)->sortByDesc(function ($item) {
                 return $item->order;
             })->all();

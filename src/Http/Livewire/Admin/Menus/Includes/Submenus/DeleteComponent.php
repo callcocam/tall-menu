@@ -23,7 +23,7 @@ class DeleteComponent extends AbstractDeleteComponent
     {
         $this->setFormProperties($model);
     }
-    // tall-menu\resources\views\livewire\admin\menus\includes\submenus\delete-component.blade.php
+    // menu\resources\views\livewire\admin\menu\includes\submenu\delete-component.blade.php
     protected function view(){
         return load_menu_builder_view("submenus.delete-component");
     }

@@ -4,7 +4,7 @@
             <div class="w-full py-2">
                 <x-slot name="header">
                     <!-- Section Hero -->
-                    @include('tall-menus::header', ['label' => 'Menus'])
+                    @include('menu::header', ['label' => 'Menus'])
                 </x-slot>
             </div>
             <div class="flex flex-col">
@@ -35,7 +35,7 @@
                                                     placeholder="{{ __('Search...') }}" />
                                             </div>
                                             <x-button icon="plus" positive  squared
-                                                href="{{ route(config('menus.routes.menus.create')) }}"
+                                                href="{{ route(config('menu.routes.menu.create')) }}"
                                                 label="{{ __('Adicionar') }}" teal flat/>
                                         </th>
                                     </tr>
@@ -64,10 +64,10 @@
                                             <td>
                                                 <div class="flex px-2 space-x-2 align-middle">
                                                     <x-button icon="cog" positive sm squared
-                                                        href="{{ route(config('menus.routes.menus.builder'), $model) }}"
+                                                        href="{{ route(config('menu.routes.menu.builder'), $model) }}"
                                                         label="{{ __('Gerenciar') }}" teal />
                                                     <x-button icon="pencil" sm primary squared
-                                                        href="{{ route(config('menus.routes.menus.edit'), $model) }}"
+                                                        href="{{ route(config('menu.routes.menu.edit'), $model) }}"
                                                         label="{{ __('Editar') }}" teal />
                                                     <x-button
                                                     x-on:confirm="{

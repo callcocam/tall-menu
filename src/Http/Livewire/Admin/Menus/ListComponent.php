@@ -47,6 +47,6 @@ final class ListComponent extends TableComponent
     }
     
     protected function view(){
-        return "tall-menus::livewire.admin.menus.list-component";
+        return "menu::livewire.admin.menus.list-component";
     }
 }

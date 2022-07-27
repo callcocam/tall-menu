@@ -20,8 +20,8 @@ use Tall\Menus\MenuBuilder;
  * @method static string|null render(string $name, string $presenter = null, array $bindings = []) Render the menu tag by given name.
  * @method static mixed style() Get a stylesheet for enable multilevel menu.
  * @method static array all() Get all Menus.
- * @method static int count() Get Count from all menus.
- * @method static void destroy() Empty the current menus.
+ * @method static int count() Get Count from all menu.
+ * @method static void destroy() Empty the current menu.
  */
 class Menu extends Facade
 {
@@ -32,6 +32,6 @@ class Menu extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'menus';
+        return 'menu';
     }
 }

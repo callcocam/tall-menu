@@ -56,15 +56,15 @@ class BuilderComponent extends FormComponent
      }
     
     protected function view(){
-        return "tall-menus::livewire.admin.menus.builder-component";
+        return "menu::livewire.admin.menus.builder-component";
     }
 
     public function load()
     {
-        if($submenus = $this->model->sub_menus){
-            foreach($submenus as $submenu){
+        if($submenu = $this->model->sub_menu){
+            foreach($submenu as $submenu){
                 \Menu::create($this->model->name, function($menu) use($submenu){
-                    if($submenu->sub_menus->count()){                      
+                    if($submenu->sub_menu->count()){                      
                         $this->dropdown($menu, $submenu);     
                     }
                     else{
@@ -88,8 +88,8 @@ class BuilderComponent extends FormComponent
     {
             $menu->dropdown($submenu->name, 
                 function ($sub) use($submenu) {    
-                    foreach($submenu->sub_menus as $item){
-                        if($item->sub_menus->count()){                      
+                    foreach($submenu->sub_menu as $item){
+                        if($item->sub_menu->count()){                      
                             $this->dropdown($sub, $item);  
                         }   
                         else{
@@ -121,6 +121,6 @@ class BuilderComponent extends FormComponent
     {
         $sortable = !$this->sortable;
         $model = $this->model;
-        return redirect()->route(config('menus.routes.menus.builder'), compact('model','sortable'));
+        return redirect()->route(config('menu.routes.menu.builder'), compact('model','sortable'));
     }
 }

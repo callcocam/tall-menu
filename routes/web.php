@@ -20,9 +20,9 @@ Route::middleware([
     'verified'
 ])->prefix('admin')->group(function () {
 
-    Route::get('/menus', \Tall\Menus\Http\Livewire\Admin\Menus\ListComponent::class)->name(config("menus.routes.menus.list"));
-    Route::get('/menu/cadastrar', \Tall\Menus\Http\Livewire\Admin\Menus\CreateComponent::class)->name(config("menus.routes.menus.create"));
-    Route::get('/menu/{model}/editar', \Tall\Menus\Http\Livewire\Admin\Menus\EditComponent::class)->name(config("menus.routes.menus.edit"));
-    Route::get('/menu/{model}/gerenciar', \Tall\Menus\Http\Livewire\Admin\Menus\BuilderComponent::class)->name(config("menus.routes.menus.builder"));
+    Route::get('/menu', \Tall\Menus\Http\Livewire\Admin\Menus\ListComponent::class)->name(config("menu.routes.menu.list"));
+    Route::get('/menu/cadastrar', \Tall\Menus\Http\Livewire\Admin\Menus\CreateComponent::class)->name(config("menu.routes.menu.create"));
+    Route::get('/menu/{model}/editar', \Tall\Menus\Http\Livewire\Admin\Menus\EditComponent::class)->name(config("menu.routes.menu.edit"));
+    Route::get('/menu/{model}/gerenciar', \Tall\Menus\Http\Livewire\Admin\Menus\BuilderComponent::class)->name(config("menu.routes.menu.builder"));
 
 });

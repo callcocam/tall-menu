@@ -4,11 +4,11 @@
             <div class="w-full py-2">
                 <x-slot name="header">
                     <!-- Section Hero -->
-                    @include('tall-menus::header', [
+                    @include('menu::header', [
                         'label' => sprintf('Gerencial - %s', $model->name),
                         'backlabel' => sprintf('Editar - %s', $model->name),
-                        'url' => route(config('menus.routes.menus.list')),
-                        'back' => route(config('menus.routes.menus.edit'), $model),
+                        'url' => route(config('menu.routes.menu.list')),
+                        'back' => route(config('menu.routes.menu.edit'), $model),
                     ])
                 </x-slot>
             </div>
@@ -17,10 +17,10 @@
                     <div class="block border-4 border-dashed border-gray-200  p-2 rounded-lg h-96  lg:h-full z-20">
                         <div class="lg:flex  lg:justify-between flex-col space-y-1">
                             <div class="flex-1 min-w-0">
-                                @include('tall-menus::livewire.admin.menus.partials.info')
+                                @include('menu::livewire.admin.menus.partials.info')
                             </div>
                             <div class="mt-5 flex lg:mt-0 lg:ml-4">
-                                @include('tall-menus::livewire.admin.menus.partials.actions')
+                                @include('menu::livewire.admin.menus.partials.actions')
                             </div>
                         </div>
                         <div class="flex flex-col">

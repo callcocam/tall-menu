@@ -40,7 +40,7 @@ class CreateComponent extends FormComponent
 
     
     protected function view(){
-        return "tall-menus::livewire.admin.menus.create-component";
+        return "menu::livewire.admin.menus.create-component";
     }
 
       /*
@@ -55,7 +55,7 @@ class CreateComponent extends FormComponent
      */
     protected function saveAndGoBackResponse()
     {
-        return redirect()->route(config('menus.routes.menus.edit'), $this->model);
+        return redirect()->route(config('menu.routes.menu.edit'), $this->model);
     }
 
 }

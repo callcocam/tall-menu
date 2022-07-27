@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sub_menus', function (Blueprint $table) {
+        Schema::create('sub_menu', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name',255)->nullable();
             $table->string('slug',255)->nullable(); 
-            $table->foreignUuid('menu_id')->nullable()->constrained('menus')->cascadeOnDelete();
+            $table->foreignUuid('menu_id')->nullable()->constrained('menu')->cascadeOnDelete();
             $table->string('status_id')->nullable()->comment("Situação")->default('published');
             if (Schema::hasTable('tenants')) {           
                 $table->foreignUuid('tenant_id')->nullable()->constrained('tenants')->cascadeOnDelete();
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_menus');
+        Schema::dropIfExists('sub_menu');
     }
 };

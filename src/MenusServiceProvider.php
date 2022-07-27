@@ -23,22 +23,22 @@ class MenusServiceProvider extends ServiceProvider
         $this->publishMigrations();
         $this->loadMigrations();
         $this->publishAssets();
-        Livewire::component( 'tall-menus::admin.menus.list-component', \Tall\Menus\Http\Livewire\Admin\Menus\ListComponent::class);
-        Livewire::component( 'tall-menus::admin.menus.create-component', \Tall\Menus\Http\Livewire\Admin\Menus\CreateComponent::class);
-        Livewire::component( 'tall-menus::admin.menus.edit-component', \Tall\Menus\Http\Livewire\Admin\Menus\EditComponent::class);
+        Livewire::component( 'menu::admin.menus.list-component', \Tall\Menus\Http\Livewire\Admin\Menus\ListComponent::class);
+        Livewire::component( 'menu::admin.menus.create-component', \Tall\Menus\Http\Livewire\Admin\Menus\CreateComponent::class);
+        Livewire::component( 'menu::admin.menus.edit-component', \Tall\Menus\Http\Livewire\Admin\Menus\EditComponent::class);
        
-        Livewire::component( 'tall-menus::admin.menus.builder-component', \Tall\Menus\Http\Livewire\Admin\Menus\BuilderComponent::class);
-        Livewire::component( 'tall-menus::admin.menus.includes.submenus.add-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\AddComponent::class);
-        Livewire::component( 'tall-menus::admin.menus.includes.submenus.update-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\UpdateComponent::class);
-        Livewire::component( 'tall-menus::admin.menus.includes.submenus.delete-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\DeleteComponent::class);
+        Livewire::component( 'menu::admin.menus.builder-component', \Tall\Menus\Http\Livewire\Admin\Menus\BuilderComponent::class);
+        Livewire::component( 'menu::admin.menus.includes.submenus.add-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\AddComponent::class);
+        Livewire::component( 'menu::admin.menus.includes.submenus.update-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\UpdateComponent::class);
+        Livewire::component( 'menu::admin.menus.includes.submenus.delete-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\DeleteComponent::class);
        
-        Livewire::component( 'tall-menus::admin.menus.includes.submenus.items.add-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\Items\AddComponent::class);
-        Livewire::component( 'tall-menus::admin.menus.includes.submenus.items.update-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\Items\UpdateComponent::class);
-        Livewire::component( 'tall-menus::admin.menus.includes.submenus.items.delete-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\Items\DeleteComponent::class);
+        Livewire::component( 'menu::admin.menus.includes.submenus.items.add-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\Items\AddComponent::class);
+        Livewire::component( 'menu::admin.menus.includes.submenus.items.update-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\Items\UpdateComponent::class);
+        Livewire::component( 'menu::admin.menus.includes.submenus.items.delete-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\Items\DeleteComponent::class);
         
-        // Livewire::component( 'tall-menus::admin.menus.includes.submenus.items.sub.add-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\Items\Sub\AddComponent::class);
-        // Livewire::component( 'tall-menus::admin.menus.includes.submenus.items.sub.update-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\Items\Sub\UpdateComponent::class);
-        // Livewire::component( 'tall-menus::admin.menus.includes.submenus.items.sub.delete-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenus\Items\Sub\DeleteComponent::class);
+        // Livewire::component( 'menu::admin.menu.includes.submenus.items.sub.add-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenu\Items\Sub\AddComponent::class);
+        // Livewire::component( 'menu::admin.menu.includes.submenus.items.sub.update-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenu\Items\Sub\UpdateComponent::class);
+        // Livewire::component( 'menu::admin.menu.includes.submenus.items.sub.delete-component', \Tall\Menus\Http\Livewire\Admin\Menus\Includes\Submenu\Items\Sub\DeleteComponent::class);
         
         $this->app->register(RouteServiceProvider::class);
 
@@ -60,11 +60,11 @@ class MenusServiceProvider extends ServiceProvider
     }
 
     /**
-     * Require the menus file if that file is exists.
+     * Require the menu file if that file is exists.
      */
     public function registerMenusFile()
     {
-        if (file_exists($file = __DIR__.'/Support/menus.php')) {
+        if (file_exists($file = __DIR__.'/Support/menu.php')) {
             require $file;
         }
     }
@@ -76,7 +76,7 @@ class MenusServiceProvider extends ServiceProvider
     {
         $this->registerHtmlPackage();
 
-        $this->app->singleton('menus', function ($app) {
+        $this->app->singleton('menu', function ($app) {
             return new Menu($app['view'], $app['config']);
         });
     }
@@ -103,7 +103,7 @@ class MenusServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['menus'];
+        return ['menu'];
     }
 
     /**
@@ -111,18 +111,18 @@ class MenusServiceProvider extends ServiceProvider
      */
     protected function registerNamespaces()
     {
-        $configPath = __DIR__ . '/../config/menus.php';
+        $configPath = __DIR__ . '/../config/menu.php';
         $viewsPath = __DIR__ . '/../resources/views';
-        $this->mergeConfigFrom($configPath, 'menus');
-        $this->loadViewsFrom($viewsPath, 'tall-menus');
+        $this->mergeConfigFrom($configPath, 'menu');
+        $this->loadViewsFrom($viewsPath, 'menu');
       
         $this->publishes([
-            $configPath => config_path('menus.php'),
-        ], 'tall-menus-config');
+            $configPath => config_path('menu.php'),
+        ], 'menu-config');
 
         $this->publishes([
-            $viewsPath => base_path('resources/views/vendor/tall/menus'),
-        ], 'tall-menus-views');
+            $viewsPath => base_path('resources/views/vendor/tall/menu'),
+        ], 'menu-views');
     }
 
     
@@ -135,11 +135,11 @@ class MenusServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../database/migrations/' => database_path('migrations'),
-        ], 'tall-menus-migrations');
+        ], 'menu-migrations');
         
         $this->publishes([
             __DIR__.'/../database/factories/' => database_path('factories'),
-        ], 'tall-menus-factories');
+        ], 'menu-factories');
         
     }
 
@@ -150,7 +150,7 @@ class MenusServiceProvider extends ServiceProvider
      */
     protected function loadMigrations()
     {
-        if (config('menus.migrate', true)) {
+        if (config('menu.migrate', true)) {
             $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         }
     }

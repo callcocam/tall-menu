@@ -40,7 +40,7 @@ class MenuBuilder implements Countable
      *
      * @var string
      */
-    protected $view = 'menus::tailwind.sidebar';
+    protected $view = 'menu::tailwind.sidebar';
 
     /**
      * The laravel view factory instance.
@@ -517,7 +517,7 @@ class MenuBuilder implements Countable
      */
     public function getOrderedItems()
     {
-        if (config('menus.ordering') || $this->ordering) {
+        if (config('menu.ordering') || $this->ordering) {
             return $this->toCollection()->sortByDesc(function ($item) {
                 return $item->order;
             })->all();

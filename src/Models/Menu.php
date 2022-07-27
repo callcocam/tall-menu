@@ -21,7 +21,7 @@ class Menu  extends AbstractModel
 //       'foreigns_table' => 'array'
 //   ];
   
-    public function sub_menus()
+    public function sub_menu()
     {
         return $this->hasMany(SubMenu::class);
     }

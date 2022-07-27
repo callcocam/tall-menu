@@ -1,6 +1,6 @@
 #TAL REPORT TABLE
 
-Pacote para gerar menus dinamicamente
+Pacote para gerar menu dinamicamente
 
 #INSTALL MIGRATE
 
@@ -32,7 +32,7 @@ module.exports = {
    ...
     content: [
         ...
-        './vendor/callcocam/tall-menu/resources/views/**/*.blade.php',
+        './vendor/callcocam/menu/resources/views/**/*.blade.php',
         ....
     ],
 ....
@@ -43,9 +43,9 @@ module.exports = {
 #PUBLICAR AS FACTORIES E SEEDERS
 
 ```
-./vendor/bin/sail artisan vendor:publish --tag=tall-menu-factories --force
+./vendor/bin/sail artisan vendor:publish --tag=menu-factories --force
  or 
-sail artisan vendor:publish --tag=tall-menu-factories --force
+sail artisan vendor:publish --tag=menu-factories --force
 
   
 ```

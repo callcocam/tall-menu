@@ -38,6 +38,6 @@ class EditComponent extends FormComponent
 
     
     protected function view(){
-        return "tall-menus::livewire.admin.menus.edit-component";
+        return "menu::livewire.admin.menus.edit-component";
     }
 }

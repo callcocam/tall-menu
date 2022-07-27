@@ -25,6 +25,6 @@ class DeleteComponent extends AbstractDeleteComponent
     }
   
     protected function view(){
-        return "tall-menus::livewire.admin.menus.includes.submenus.delete-component";
+        return "menu::livewire.admin.menu.includes.submenus.delete-component";
     }
 }

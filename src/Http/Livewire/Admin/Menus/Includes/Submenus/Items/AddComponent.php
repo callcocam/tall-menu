@@ -53,7 +53,7 @@ class AddComponent extends FormComponent
 
      public function success(){
         // if(parent::success()){
-            $model = $this->model->sub_menus()->create($this->data);
+            $model = $this->model->sub_menu()->create($this->data);
             $model->attribute()->create(data_get($this->data ,'attribute'));
             $this->emit('loadMenus',[]);
         // }

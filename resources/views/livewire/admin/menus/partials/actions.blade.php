@@ -1,5 +1,5 @@
 <div class="hidden sm:block ml-3">
-    @livewire('tall-menus::admin.menus.includes.submenus.add-component',compact('model'), key($model->id))
+    @livewire('menu::admin.menus.includes.submenus.add-component',compact('model'), key($model->id))
 </div>
 <span class="hidden sm:block ml-3">
     <button type="button" wire:click="activeOrder"

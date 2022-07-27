@@ -7,8 +7,9 @@
     "require": {
         "php": "^7.3|^8.0",
         "livewire/livewire": "^2.5",
-        "callcocam/tall-acl": "dev-main",
-        "callcocam/tall-sluggable": "dev-main"
+        "callcocam/acl": "dev-main",
+        "callcocam/tall-sluggable": "dev-main",
+        "callcocam/tall-status": "dev-main"
     },
     "autoload": {
         "psr-4": {

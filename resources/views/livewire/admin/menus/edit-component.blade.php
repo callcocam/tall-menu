@@ -4,9 +4,9 @@
             <div class="w-full py-2">
                 <x-slot name="header">
                     <!-- Section Hero -->
-                    @include('tall-menus::header', [
+                    @include('menu::header', [
                         'label' => sprintf('Editar - %s', $model->name),
-                        'url' => route(config('menus.routes.menus.list')),
+                        'url' => route(config('menu.routes.menu.list')),
                     ])
                 </x-slot>
             </div>
@@ -14,16 +14,16 @@
                 <div class="mt-5 md:mt-0">
                     <form wire:submit.prevent="saveAndStay">
                         <div class="shadow sm:rounded-md ">
-                            @include('tall-menus::livewire.admin.menus.form')
+                            @include('menu::livewire.admin.menus.form')
                         </div>
                         <div class="flex justify-between px-4 py-3 bg-gray-50 text-right sm:px-6 z-10 space-x-2">
 
                             <x-button wire:loading.attr="disabled" squared positive
-                                href="{{ route(config('menus.routes.menus.builder'), $model) }}"
+                                href="{{ route(config('menu.routes.menu.builder'), $model) }}"
                                 label="{{ __('Gerenciar Menus') }}" icon="cog" />
                             <div>
                                 <x-button wire:loading.attr="disabled" squared negative
-                                    href="{{ route(config('menus.routes.menus.list')) }}"
+                                    href="{{ route(config('menu.routes.menu.list')) }}"
                                     label="{{ __('Voltar para alista') }}" icon="x" />
                                 <x-button type="submit" wire:loading.attr="disabled" squared primary
                                     label="{{ __('Sarvar as alterações') }}" icon="check" />

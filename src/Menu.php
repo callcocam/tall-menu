@@ -14,11 +14,11 @@ use Illuminate\View\Factory;
 class Menu implements Countable
 {
     /**
-     * The menus collections.
+     * The menu collections.
      *
      * @var array
      */
-    protected $menus = array();
+    protected $menu = array();
     /**
      * @var Repository
      */
@@ -71,7 +71,7 @@ class Menu implements Countable
 
         $builder->setViewFactory($this->views);
 
-        $this->menus[$name] = $builder;
+        $this->menu[$name] = $builder;
 
         return $resolver($builder);
     }
@@ -85,7 +85,7 @@ class Menu implements Countable
      */
     public function has($name)
     {
-        return array_key_exists($name, $this->menus);
+        return array_key_exists($name, $this->menu);
     }
 
     /**
@@ -97,7 +97,7 @@ class Menu implements Countable
      */
     public function instance($name)
     {
-        return $this->has($name) ? $this->menus[$name] : null;
+        return $this->has($name) ? $this->menu[$name] : null;
     }
 
     /**
@@ -109,7 +109,7 @@ class Menu implements Countable
      */
     public function modify($name, Closure $callback)
     {
-        $menu = collect($this->menus)->filter(function ($menu) use ($name) {
+        $menu = collect($this->menu)->filter(function ($menu) use ($name) {
             return $menu->getName() == $name;
         })->first();
 
@@ -127,7 +127,7 @@ class Menu implements Countable
     public function get($name, $presenter = null, $bindings = array())
     {
         return $this->has($name) ?
-            $this->menus[$name]->setBindings($bindings)->render($presenter) : null;
+            $this->menu[$name]->setBindings($bindings)->render($presenter) : null;
     }
 
     /**
@@ -150,34 +150,34 @@ class Menu implements Countable
      */
     public function style()
     {
-        return $this->views->make('menus::style')->render();
+        return $this->views->make('menu::style')->render();
     }
 
     /**
-     * Get all menus.
+     * Get all menu.
      *
      * @return array
      */
     public function all()
     {
-        return $this->menus;
+        return $this->menu;
     }
 
     /**
-     * Get count from all menus.
+     * Get count from all menu.
      *
      * @return int
      */
     public function count()
     {
-        return count($this->menus);
+        return count($this->menu);
     }
 
     /**
-     * Empty the current menus.
+     * Empty the current menu.
      */
     public function destroy()
     {
-        $this->menus = array();
+        $this->menu = array();
     }
 }
