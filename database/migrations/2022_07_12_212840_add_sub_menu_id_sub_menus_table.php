@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('sub_menu', function (Blueprint $table) {
-            $table->foreignUuid('sub_menu_id')->nullable()->constrained('sub_menu')->cascadeOnDelete();
+        Schema::table('sub_menus', function (Blueprint $table) {
+            $table->foreignUuid('sub_menu_id')->nullable()->constrained('sub_menus')->cascadeOnDelete();
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('sub_menu', function (Blueprint $table) {
+        Schema::table('sub_menus', function (Blueprint $table) {
             $table->dropColumn('sub_menu_id');
         });
     }
