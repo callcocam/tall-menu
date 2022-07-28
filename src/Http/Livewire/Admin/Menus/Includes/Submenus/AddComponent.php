@@ -19,6 +19,11 @@ class AddComponent extends FormComponent
 
     use AuthorizesRequests, MenuOptions;
 
+    public $updated = false;
+
+    
+    public $listeners = ['openModal'];
+
    /*
     |--------------------------------------------------------------------------
     |  Features mount
@@ -58,6 +63,7 @@ class AddComponent extends FormComponent
        if(parent::success()){
         $this->model->attribute()->create(data_get($this->data ,'attribute'));
         $this->emit('loadMenus',[]);
+        $this->updated = true;
        }
      }
 
@@ -69,4 +75,15 @@ class AddComponent extends FormComponent
         return sprintf('ADICIONAR AO MENU PRINCIPAL - %s', $this->model->name);
 
     }
+    /*
+    |--------------------------------------------------------------------------
+    |  Features order
+    |--------------------------------------------------------------------------
+    | Order visivel no me menu
+    |
+    */
+    public function closeModal(){
+        if($this->updated)
+            return redirect()->route(config('menu.routes.menu.builder'), ['model'=>$this->menu]);         
+     }
 }

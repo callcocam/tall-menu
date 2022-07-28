@@ -20,11 +20,18 @@ class SubMenu extends AbstractModel
     {
         return $this->morphOne(MenuAttribute::class, 'menu_attributeable');
     }
+
     public function sub_menu()
     {
         return $this->hasMany(SubMenu::class);
     }
     
+    
+    public function sub()
+    {
+        return $this->hasOne(SubMenu::class);
+    }
+
     public function menu()
     {
         return $this->belongsTo(Menu::class);

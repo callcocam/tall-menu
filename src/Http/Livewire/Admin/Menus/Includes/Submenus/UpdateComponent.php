@@ -17,6 +17,11 @@ class UpdateComponent extends FormComponent
 {
 
     use AuthorizesRequests, MenuOptions;
+
+    public $updated = false;
+
+    
+    public $listeners = ['openModal'];
     
    /*
     |--------------------------------------------------------------------------
@@ -28,6 +33,16 @@ class UpdateComponent extends FormComponent
     public function mount(?SubMenu $model)
     {
         $this->setFormProperties($model);
+    }
+
+  /**
+     * @param null $model
+     */
+    protected function setFormProperties($model = null)
+    {
+        $this->menu = $model->menu;
+    
+        parent::setFormProperties($model);
     }
 
     protected function rules(){
@@ -42,6 +57,7 @@ class UpdateComponent extends FormComponent
         $this->updated = true;
         $this->emit('loadMenus',[]);
         $this->currentMenu = $this->menu;
+       
     }
     }
 
@@ -53,6 +69,16 @@ class UpdateComponent extends FormComponent
     public function getTitleProperty(){
         return sprintf('ALTERAR MENU PRINCIPAL - %s', $this->model->name);
     }
-
+    /*
+    |--------------------------------------------------------------------------
+    |  Features order
+    |--------------------------------------------------------------------------
+    | Order visivel no me menu
+    |
+    */
+    public function closeModal(){
+      
+        
+     }
       
 }

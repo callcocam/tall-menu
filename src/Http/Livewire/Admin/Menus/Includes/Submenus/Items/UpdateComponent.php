@@ -17,7 +17,9 @@ class UpdateComponent extends FormComponent
 {
 
     use AuthorizesRequests, MenuOptions;
-    
+
+    public $updated = false;
+
 
    /*
     |--------------------------------------------------------------------------
@@ -30,6 +32,15 @@ class UpdateComponent extends FormComponent
     {
     
         $this->setFormProperties($model);
+    }
+    
+    /**
+     * @param null $model
+     */
+    protected function setFormProperties($model = null)
+    {
+        $this->menu = $model->menu;
+        parent::setFormProperties($model);
     }
 
     protected function rules(){
@@ -55,4 +66,15 @@ class UpdateComponent extends FormComponent
     public function getTitleProperty(){
         return sprintf("ALTERAR ITEM DO MENU - %s", $this->model->name);
     }
+    /*
+    |--------------------------------------------------------------------------
+    |  Features order
+    |--------------------------------------------------------------------------
+    | Order visivel no me menu
+    |
+    */
+    public function closeModal(){
+        if($this->updated)
+            return redirect()->route(config('menu.routes.menu.builder'), ['model'=>$this->menu]);         
+     }
 }
